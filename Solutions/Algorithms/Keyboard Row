@@ -1,0 +1,89 @@
+Given an array of strings words, return the words that can be typed using letters of the alphabet on only one row of American keyboard like the image below.
+
+In the American keyboard:
+
+the first row consists of the characters "qwertyuiop",
+the second row consists of the characters "asdfghjkl", and
+the third row consists of the characters "zxcvbnm".
+
+ 
+
+Example 1:
+
+Input: words = ["Hello","Alaska","Dad","Peace"]
+Output: ["Alaska","Dad"]
+Example 2:
+
+Input: words = ["omk"]
+Output: []
+Example 3:
+
+Input: words = ["adsdf","sfd"]
+Output: ["adsdf","sfd"]
+ 
+
+Constraints:
+
+1 <= words.length <= 20
+1 <= words[i].length <= 100
+words[i] consists of English letters (both lowercase and uppercase). 
+************************************************************************************************************************************************************
+class Solution {
+    public String[] findWords(String[] words) {
+        
+        
+        HashMap<Character,Integer> map=new HashMap<>();
+        map.put('q',1);
+        map.put('w',1);
+        map.put('e',1);
+        map.put('r',1);
+        map.put('t',1);
+        map.put('y',1);
+        map.put('u',1);
+        map.put('i',1);
+        map.put('o',1);
+        map.put('p',1);
+        map.put('a',2);
+        map.put('s',2);
+        map.put('d',2);
+        map.put('f',2);
+        map.put('g',2);
+        map.put('h',2);
+        map.put('j',2);
+        map.put('k',2);
+        map.put('l',2);
+        map.put('z',3);
+        map.put('x',3);
+        map.put('c',3);
+        map.put('v',3);
+        map.put('b',3);
+        map.put('n',3);
+        map.put('m',3);
+        List<String> ls=new ArrayList<String>();
+        for(String word:words)
+        {   
+            boolean flag=true;
+            String wordinLower=word.toLowerCase();
+        
+            int first_letter=map.get(wordinLower.charAt(0));
+            for(int i=1;i<wordinLower.length();i++)
+            {
+                if(first_letter!= map.get(wordinLower.charAt(i)))
+                {
+                    flag=false;
+                    continue;
+                }
+            }
+            
+            if(flag==true)
+            {
+                ls.add(word);
+            }
+        }
+        String[] result= ls.toArray(new String[ls.size()]);
+        
+        return result;
+        
+    }
+}
+************************************************************************************************************************************************************
