@@ -60,5 +60,23 @@ int i =0;
         return i+1;
 }}
 
+
+Efficient solution
+
+
+class Solution {
+    public int removeDuplicates(int[] nums) {  
+    int i=0;
+    for(int n: nums)
+    {
+    if(i<1; n> nums[i-1])
+    {
+    nums[i++]=n;
+    }
+    }
+    return i;
+    }
+
+
 Notes:
  compare two elements and if its not equal and make next element of the array to the ith position.
