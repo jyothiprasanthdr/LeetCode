@@ -1,0 +1,70 @@
+Given a string s, return the number of palindromic substrings in it.
+
+A string is a palindrome when it reads the same backward as forward.
+
+A substring is a contiguous sequence of characters within the string.
+
+ 
+
+Example 1:
+
+Input: s = "abc"
+Output: 3
+Explanation: Three palindromic strings: "a", "b", "c".
+Example 2:
+
+Input: s = "aaa"
+Output: 6
+Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+ 
+
+Constraints:
+
+1 <= s.length <= 1000
+s consists of lowercase English letters.
+Accepted
+498,081
+Submissions
+753,284
+Seen this question in a real interview before?
+
+*********************************************************************************************************************************************************
+class Solution {
+    
+    public int helper(char[] s, int left, int right)
+    {
+        int count=0;
+        
+        while(left>=0 && right<s.length && s[left]==s[right])
+        {
+            count++;
+            left-=1;
+            right+=1;
+        }
+        return count;
+        
+    }
+
+    
+    public int countSubstrings(String s) {
+       
+       int c=0;
+        char[] str = s.toCharArray();
+        int left,right;
+        for(int i=0; i< s.length();i++)
+        {
+            
+            c+=helper(str,i,i);
+             c+=helper(str,i,i+1);
+        
+            
+        }
+        return c;
+     
+        
+    }
+}
+
+TC: O(n^2)
+SC: O(n)
+*********************************************************************************************************************************************************
