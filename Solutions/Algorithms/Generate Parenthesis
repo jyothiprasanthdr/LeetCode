@@ -1,0 +1,60 @@
+ Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+ 
+
+Example 1:
+
+Input: n = 3
+Output: ["((()))","(()())","(())()","()(())","()()()"]
+Example 2:
+
+Input: n = 1
+Output: ["()"]
+ 
+
+Constraints:
+
+1 <= n <= 8
+Accepted
+1,201,263
+Submissions
+1,679,915
+************************************************************************************************************************************************************
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> output_array=new ArrayList<>();
+        StringBuilder sb=new StringBuilder();
+        backtrack(output_array,sb,0,0,n);
+        
+        return output_array;
+        
+    }
+    
+    
+    public void backtrack(List<String> output_array,StringBuilder sb, int open,int close,int n)
+    {
+        if(sb.toString().length()==n*2)
+        {
+            output_array.add(sb.toString());
+            return;
+            
+        }
+        
+        if(open<n)
+        {   
+            sb.append("(");
+            backtrack(output_array,sb,open+1,close,n);
+            sb.setLength(sb.length()-1);
+        }
+        if(close<open)
+        {
+            sb.append(")");
+            backtrack(output_array,sb,open,close+1,n);
+            sb.setLength(sb.length()-1);
+        }
+        
+        
+        
+    }
+}
+************************************************************************************************************************************************************
